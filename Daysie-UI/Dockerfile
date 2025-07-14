@@ -1,4 +1,4 @@
-FROM node:17-alpine
+FROM node:20-bookworm
 
 # Create app directory
 WORKDIR /app
@@ -8,8 +8,8 @@ WORKDIR /app
 # where available (npm@5+)
 COPY package.json ./
 
-#RUN npm install -g npm@8.7.0
 RUN npm install
+#RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
