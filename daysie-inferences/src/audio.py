@@ -85,13 +85,8 @@ async def predict(
         "predicted_class": predicted_class
     }
 
-    # Save the results to a file
-    with open(results_file, "w") as outfile:
-        json.dump(results, outfile)
-
     return {
         "message": "Prediction completed.",
-        "results_file": results_file,
         "results": results
     }
 

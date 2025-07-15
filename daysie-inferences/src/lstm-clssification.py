@@ -74,8 +74,6 @@ async def predict(
         "modelclass": class_names
     }
 
-    with open(results_file, "w") as outfile:
-        json.dump(results, outfile)
 
-    return {"message": "Prediction completed.", "results_file": results_file}
+    return {"message": "Prediction completed.", "results": results}
 

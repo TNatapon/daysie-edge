@@ -80,3 +80,39 @@ services:
     ports:
       - 8080:8080
     restart: always
+
+  daysie-images-inference:
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-images-inference
+    ports:
+      - 9000
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn images:app --host 0.0.0.0 --port 9000
+    restart: always
+
+  daysie-audio-inference:
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-audio-inference
+    ports:
+      - 9001
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn audio:app --host 0.0.0.0 --port 9001
+    restart: always
+
+  daysie-timeserie-inference:
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-timeseries-inference
+    ports:
+      - 9002
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn lstm-regression:app --host 0.0.0.0 --port 9002
+    restart: always

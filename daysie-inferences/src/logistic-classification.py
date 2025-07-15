@@ -67,15 +67,12 @@ async def predict(
         probabilities_classes.append(instance_probs)
 
     timestr = time.strftime("%Y%m%d-%H%M%S", time.gmtime(time.time()))
-    results_file = os.path.join(RESULT_DIR, f"predicted_results_{timestr}.json")
+    #results_file = os.path.join(RESULT_DIR, f"predicted_results_{timestr}.json")
     results = {
         "created": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(time.time())),
         "probability": probabilities_classes,
         "modelclass": class_names
     }
 
-    with open(results_file, "w") as outfile:
-        json.dump(results, outfile)
-
-    return {"message": "Prediction completed.", "results_file": results_file}
+    return {"message": "Prediction completed.", "results": results}
 

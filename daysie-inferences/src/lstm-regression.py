@@ -60,7 +60,7 @@ async def predict(
     
     # Save results
     timestr = time.strftime("%Y%m%d-%H%M%S", time.gmtime())
-    results_filename = os.path.join(RESULT_DIR, f"predicted_results_{timestr}.csv")
+    results_filename = os.path.join(RESULT_DIR, f"predicted_results.csv")
     results_df = pd.DataFrame({
         "datetime": df.index[window_size:window_size + len(predictions)],
         "True_Label": labels.flatten(),
@@ -72,7 +72,6 @@ async def predict(
         "created": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
         "mse": mse,
         "mae": mae,
-        "r2_score": r2,
-        "results_csv": results_filename
+        "r2_score": r2
     }
 
