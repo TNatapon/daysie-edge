@@ -82,7 +82,7 @@ services:
     restart: always
 
   daysie-images-inference:
-    image: daysie-inference-311-215:2.0
+    image: daysie-inference-311-215:1.0
     container_name: daysie-images-inference
     ports:
       - 9000
@@ -94,7 +94,7 @@ services:
     restart: always
 
   daysie-audio-inference:
-    image: daysie-inference-311-215:2.0
+    image: daysie-inference-311-215:1.0
     container_name: daysie-audio-inference
     ports:
       - 9001
@@ -106,7 +106,7 @@ services:
     restart: always
 
   daysie-timeserie-inference:
-    image: daysie-inference-311-215:2.0
+    image: daysie-inference-311-215:1.0
     container_name: daysie-timeseries-inference
     ports:
       - 9002
