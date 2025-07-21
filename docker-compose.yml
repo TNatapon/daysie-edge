@@ -20,7 +20,7 @@ services:
       - ./daysiemq-storage/config:/mosquitto/config
       - ./daysiemq-storage/data:/mosquitto/data
       - ./daysiemq-storage/log:/mosquitto/log
-      - ./daysiemq-storage/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+     # - ./daysiemq-storage/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
     restart: always
 
   telegraf:

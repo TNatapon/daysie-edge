@@ -830,7 +830,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 280,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "ef9910f18428a153"
@@ -850,7 +850,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 740,
-        "y": 340,
+        "y": 460,
         "wires": []
     },
     {
@@ -883,7 +883,7 @@
             }
         ],
         "x": 490,
-        "y": 340,
+        "y": 460,
         "wires": [
             [
                 "6d299a1d66eca4f1"
@@ -959,12 +959,12 @@
         "env": [
             {
                 "name": "CSV_FILE",
-                "value": "Steel_industry_data_test_2.csv",
+                "value": "Timeseries_test2.csv",
                 "type": "str"
             }
         ],
-        "x": 490,
-        "y": 480,
+        "x": 510,
+        "y": 620,
         "wires": [
             [
                 "79d267b8f8b4e268"
@@ -996,7 +996,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 280,
-        "y": 480,
+        "y": 680,
         "wires": [
             [
                 "d08802afa6b09a34"
@@ -1016,7 +1016,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 760,
-        "y": 420,
+        "y": 620,
         "wires": []
     },
     {
@@ -1032,7 +1032,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 740,
-        "y": 500,
+        "y": 700,
         "wires": []
     }
 ]

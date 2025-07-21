@@ -1,6 +1,7 @@
 influxdb-storage
 #daysieflow-storage
-daysiemq-storage
+daysiemq-storage/data
+daysiemq-storage/log
 grafana-storage
 
 ./node_modules
