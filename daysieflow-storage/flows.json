@@ -201,6 +201,37 @@
         "icon": "font-awesome/fa-asterisk"
     },
     {
+        "id": "e3984e9953ef8fbc",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "daysiemq-1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "383125e88ca32abe",
         "type": "function",
         "z": "1154cd9ed8282204",
@@ -858,7 +889,18 @@
         "type": "subflow:1154cd9ed8282204",
         "z": "529d42eb902460a4",
         "name": "",
-        "env": [],
+        "env": [
+            {
+                "name": "MODEL_FILE",
+                "value": "images/model.h5",
+                "type": "str"
+            },
+            {
+                "name": "METADATA_FILE",
+                "value": "images/metadata.json",
+                "type": "str"
+            }
+        ],
         "x": 500,
         "y": 160,
         "wires": [
@@ -961,16 +1003,27 @@
                 "name": "CSV_FILE",
                 "value": "Steel_industry_data_test_2.csv",
                 "type": "str"
+            },
+            {
+                "name": "MODEL_FILE",
+                "value": "timeseries_1/model.h5",
+                "type": "str"
+            },
+            {
+                "name": "METADATA_FILE",
+                "value": "timeseries_1/metadata.json",
+                "type": "str"
             }
         ],
         "x": 510,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "79d267b8f8b4e268"
             ],
             [
-                "1ff5da87f283667a"
+                "1ff5da87f283667a",
+                "7825b644b1e62e2f"
             ]
         ]
     },
@@ -995,7 +1048,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 280,
+        "x": 200,
         "y": 680,
         "wires": [
             [
@@ -1015,8 +1068,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 620,
+        "x": 660,
+        "y": 560,
         "wires": []
     },
     {
@@ -1031,8 +1084,90 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
+        "x": 500,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7825b644b1e62e2f",
+        "type": "function",
+        "z": "529d42eb902460a4",
+        "name": "function 1",
+        "func": "var pl = msg.payload[1].Predicted_Label\nvar tl = msg.payload[1].True_Label\n\nmsg.payload = {\n    data:{\n        PL:pl,\n        TL:tl\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 740,
         "y": 700,
+        "wires": [
+            [
+                "0efcf1aa01d59f5e",
+                "5e7d96aecd2d7d8b"
+            ]
+        ]
+    },
+    {
+        "id": "0efcf1aa01d59f5e",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 560,
         "wires": []
+    },
+    {
+        "id": "5e7d96aecd2d7d8b",
+        "type": "mqtt out",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "topic": "@daysie/agent/local",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3984e9953ef8fbc",
+        "x": 1000,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "72083729017f5ffd",
+        "type": "inject",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            []
+        ]
     }
 ]

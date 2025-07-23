@@ -125,3 +125,15 @@ services:
     command: >
       uvicorn lstm-regression:app --host 0.0.0.0 --port 9002
     restart: always
+
+  # daysie-knn-inference:
+  #   image: daysie-knn-inference:1.0
+  #   container_name: daysie-knn-inference
+  #   ports:
+  #     - 9003
+  #   volumes:
+  #     - ./daysieflow-storage/daysie-und/model:/app/weigths
+  #     - ./daysieflow-storage/daysie-und/config/vibe_config.toml:/app/vibe_config.toml
+  #   command: >
+  #     uvicorn daysie-suc-inference:app --host 0.0.0.0 --port 9003
+  #   restart: always
